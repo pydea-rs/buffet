@@ -1,0 +1,35 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="fa-IR" dir="rtl">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    
+    <title>بوفه</title>
+    
+    <link rel="stylesheet" href={% static 'css/bootstrap.css' %}>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css" integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous" />
+    
+    <link rel="stylesheet" href={% static 'css/layout.css' %} />
+
+</head>
+
+<body>
+    
+    {% include 'common/header.html' %}
+
+    {% block content %} 
+    
+    {% endblock %}
+    
+    {% include 'common/footer.html' %}
+
+    <script src={% static 'js/jquery.slim.js' %}></script>
+    <script src={% static 'js/popper.min.js' %}></script>
+    <script src={% static 'js/bootstrap.bundle.js' %}></script>
+    <script src={% static 'js/iconify.min.js' %}></script>
+</body>
+
+</html>

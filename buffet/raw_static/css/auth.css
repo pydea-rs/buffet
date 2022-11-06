@@ -1,0 +1,44 @@
+#authTabs {
+    flex: 1 1 auto;
+}
+
+#loginBar {
+    height: 50px;
+    box-shadow: 1rem;
+}
+
+.nav .nav-item {
+    margin-left: 1rem;
+    margin-right: 1rem;
+}
+
+.nav-link.active {
+    border: none !important;
+    border-bottom: 5px solid #78a23e !important;
+}
+
+.tab-content {
+    margin: 8rem;
+}
+
+h2 {
+    margin-bottom: 3rem;
+}
+
+button {
+    background-color: #78a23e !important;
+}
+
+button:hover {
+    background-color: #E68A01 !important;
+}
+
+#socialIcons svg,
+ul li {
+    margin-right: 3rem;
+    margin-left: 3rem;
+}
+
+a {
+    color: gray;
+}

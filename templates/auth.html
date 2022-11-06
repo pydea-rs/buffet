@@ -1,0 +1,96 @@
+
+{% extends 'common/layout.html' %}
+{% load static %}
+
+{% block content %}
+    <link rel="stylesheet" href={% static 'css/auth.css' %} />
+    
+    <nav id="loginBar" class="w-100 shadow bg-white">
+        <div class="nav justify-content-center" role="tablist">
+            {% if not show_register_tab %}
+                <a id="nav-login-tab" class="nav-item nav-link text-dark active" href="#nav-login" data-toggle="tab" role="tab" aria-controls="nav-login" aria-selected="true">ورود</a>
+                <a id="nav-register-tab" class="nav-item nav-link text-dark" href="#nav-register" data-toggle="tab" role="tab" aria-controls="nav-register" aria-selected="false">ثبت نام</a>
+            {% else %}
+                <a id="nav-login-tab" class="nav-item nav-link text-dark" href="#nav-login" data-toggle="tab" role="tab" aria-controls="nav-login" aria-selected="true">ورود</a>
+                <a id="nav-register-tab" class="nav-item nav-link text-dark active" href="#nav-register" data-toggle="tab" role="tab" aria-controls="nav-register" aria-selected="false">ثبت نام</a>
+            {% endif %}
+        </div>
+    </nav>
+
+    <div id="authTabs" class="tab-content d-flex justify-content-center text-center">
+
+    {% if not show_register_tab %}
+        <div id="nav-login" class="tab-pane fade show active" role="tabpanel" aria-labelledby="nav-login-tab">
+    {% else %}
+        <div id="nav-login" class="tab-pane fade" role="tabpanel" aria-labelledby="nav-login-tab">
+    {% endif %}
+            <h4> ورود </h4>
+
+            <form action="{% url 'login' %}" method="POST">
+                {% csrf_token %}
+                <div class="m-3">
+                    <div class="form-group">
+                        <div class="input-group">
+                            <span class="iconify" data-icon="fluent:mail-48-filled" data-width="36" data-height="36"></span>
+                            <input type="text" class="form-control" name="contact" placeholder="ایمیل یا شماره تلفن" />
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="input-group">
+                            <span class="iconify" data-icon="fluent:lock-closed-32-filled" data-width="36" data-height="36"></span>
+                            <input type="password" class="form-control" name="password" placeholder="رمز عبور">
+                        </div>
+                    </div>
+                </div>
+
+                <button class="btn btn-lg rounded-pill" type="submit">   ورود   </button>
+            </form>
+
+        </div>
+    {% if not show_register_tab %}
+        <div id="nav-register" class="tab-pane fade" role="tabpanel" aria-labelledby="nav-register-tab">
+    {% else %}
+        <div id="nav-register" class="tab-pane fade show active" role="tabpanel" aria-labelledby="nav-register-tab">
+    {% endif %}
+            <h4> ثبت نام </h4>
+
+            <form action="{% url 'register' %}" method="POST">
+                {% csrf_token %}
+                <div class="m-3">
+                    <div class="form-group">
+                        <div class="input-group">
+                            <span class="iconify" data-icon="fluent:mail-48-filled" data-width="36" data-height="36"></span>
+                            {{ register_form.username }}
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="input-group">
+                            <span class="iconify" data-icon="fluent:mail-48-filled" data-width="36" data-height="36"></span>
+                            {{ register_form.contact }}
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="input-group">
+                            <span class="iconify" data-icon="fluent:lock-closed-32-filled" data-width="36" data-height="36"></span>
+                            {{ register_form.password }}
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="input-group">
+                            <span class="iconify" data-icon="fluent:lock-closed-32-filled" data-width="36" data-height="36"></span>
+                            {{ register_form.confirm_password }}
+                        </div>
+                    </div>
+                    <div class="form-check">
+                        {{ register_form.rules_accepted }}
+                        <label class="form-check-label" for="rules">     قوانین را می پذیرم</label>
+                    </div>
+                    <p class="mt-1">{{ register_form.non_field_errors }} </p>
+                </div>
+                <button class="btn btn-lg rounded-pill" type="submit">    ثبت نام    </button>
+            </form>
+
+        </div>
+    </div>
+
+{% endblock %}

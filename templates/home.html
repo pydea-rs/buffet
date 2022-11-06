@@ -1,0 +1,54 @@
+{% extends 'common/layout.html' %} 
+{% load static %} 
+
+{% block content %}
+    <link rel="stylesheet" href={% static 'css/home.css' %} />
+
+    <!--baner-->
+    <section>
+        <div class="container-fluid">
+            <div class="row justify-content-center align-items-center wb-bg-banner">
+                <div class="col-sm-10 text-center text-white">
+                    <form class="form-inline mr-auto">
+                        <div class="input-group">
+                            <div class="input-group-prepend order-2">
+                                <button class="btn btn-outline-secondary " type="button" id="button-addon1">
+                                جستجو
+                                </button>
+                            </div>
+                            <input type="text" class="form-control" placeholder="دنبال چی ای؟" aria-label="Example text with button addon" aria-describedby="button-addon1" />
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <section>
+        <div class="container-fluid mt-4">
+            <div class="row  mb-3 ">
+                {% if foods %}
+                    {% for food in foods %}
+                       <div class="food-card col-3 mt-5">
+                            <div class="card text-center">
+                                <img class="card-img-top mt-4 px-3 " src="{{ food.image.url }}" alt=""/>
+                                <div class="card-body">
+                                    <h5 class="card-title text-muted text-center">{{ food.name }}</h5>
+                                    <p class="card-text text-muted text-center">
+                                        {{ food.address }}
+                                    </p>
+                                    <div class="btn">
+                                        <button class="btn btn-success text-white btn-sm mr-5 ml-3 " type="button">صددرصد طبیعی</button>
+                                        <button class="btn btn-warning text-white  btn-sm mr-0 px-3" type="button">شش ماه ضمانت</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    {% endfor %}
+                {% endif %}
+            </div>
+        </div>
+    </section>
+
+{% endblock %}
