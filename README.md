@@ -1,7 +1,8 @@
 # Buffet
 Simple buffet web app for ordering food.
 # Language: Python, HTML, CSS
-
+* Running Demo on: https://canary-navy-adapter.glitch.me/
+  
 # Features:
 1- Create accounts
 2- View Foods
